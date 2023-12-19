@@ -68,7 +68,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ```
 
-### Set React navigator
+### Set up React navigator
 
 ```bash
 # In App.jsx
