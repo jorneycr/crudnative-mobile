@@ -152,3 +152,5 @@ json-server db.json -H 192.168.20.62
 [Home](http://192.168.20.62:3000)
 
 [Get Clientes](http://192.168.20.62:3000/clientes)
+
+[Post Clientes](http://192.168.20.62:3000/clientes)

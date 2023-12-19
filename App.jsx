@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, ScrollView, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
 
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 
@@ -9,11 +9,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Inicio from './src/views/Inicio';
 import NuevoCliente from './src/views/NuevoCliente';
 import DetallesCliente from './src/views/DetallesCliente';
-import BarraSuperior from './src/components/Barra';
+import BarraSuperior from './src/components/BarraSuperior';
 
 const Stack = createNativeStackNavigator();
 
-// definir tema
+// Definir el tema
 const theme = {
   ...DefaultTheme,
   colors: {
@@ -53,6 +53,15 @@ function App() {
           <Stack.Screen
             name="NuevoCliente"
             component={NuevoCliente}
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: theme.colors.primary,
+              },
+              headerTintColor: theme.colors.surface,
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
             options={{title: 'Nuevo Cliente'}}
           />
           <Stack.Screen

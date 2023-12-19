@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Button} from 'react-native-paper';
 
-const Barra = ({navigation, route}) => {
+const BarraSuperior = ({navigation, route}) => {
   const handlePress = () => {
     navigation.navigate('NuevoCliente');
   };
@@ -13,4 +13,4 @@ const Barra = ({navigation, route}) => {
   );
 };
 
-export default Barra;
+export default BarraSuperior;

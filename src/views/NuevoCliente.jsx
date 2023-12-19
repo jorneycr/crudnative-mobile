@@ -11,7 +11,9 @@ import {
 import globalStyles from '../../styles/global';
 import axios from 'axios';
 
-const NuevoCliente = () => {
+const NuevoCliente = ({navigation, route}) => {
+  const {guardarConsultarAPI} = route.params;
+
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
@@ -31,18 +33,23 @@ const NuevoCliente = () => {
     };
 
     try {
-      const res = await axios.post(
-        'http://192.168.20.62:3000/clientes',
-        cliente,
-      );
-      console.log(res);
       if (Platform.OS == 'android') {
+        await axios.post('http://192.168.20.62:3000/clientes', cliente);
       } else {
         await axios.post('http://localhost:3000/clientes', cliente);
       }
     } catch (error) {
       console.log(error);
     }
+
+    navigation.navigate('Inicio');
+
+    setNombre('');
+    setTelefono('');
+    setCorreo('');
+    setEmpresa('');
+
+    guardarConsultarAPI(true);
   };
   return (
     <ScrollView>

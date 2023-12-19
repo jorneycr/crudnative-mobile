@@ -1,11 +1,25 @@
 {
   "clientes": [
     {
-      "nombre": "jjorney",
+      "nombre": "Jorney",
       "telefono": "6545151",
       "correo": "correo@coreo.com",
       "empresa": "test",
       "id": 1
+    },
+    {
+      "nombre": "Daniel",
+      "telefono": "6545151",
+      "correo": "correo@coreo.com",
+      "empresa": "test",
+      "id": 2
+    },
+    {
+      "nombre": "dabda",
+      "telefono": "dadadad",
+      "correo": "dad",
+      "empresa": "dad",
+      "id": 3
     }
   ]
 }
