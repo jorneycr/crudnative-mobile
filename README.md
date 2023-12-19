@@ -144,3 +144,7 @@ db.json
 json-server db.json
 
 ```
+
+### End-Points
+
+[Get Clientes](http://localhost:3000/clientes)
