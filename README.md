@@ -101,3 +101,24 @@ export default App;
 ### Oficial Documentation
 
 `https://reactnavigation.org/docs/hello-react-navigation`
+
+## Icons
+
+### Dependencies
+
+```bash
+npm install react-native-vector-icons
+
+```
+
+### Seet Up Android
+
+```bash
+
+# In android\app\build.gradle
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+```
+
+`https://oblador.github.io/react-native-vector-icons/`
