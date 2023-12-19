@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, ScrollView, StyleSheet, View} from 'react-native';
+import {Alert, Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {
   Button,
   Headline,
@@ -9,6 +9,7 @@ import {
   Portal,
 } from 'react-native-paper';
 import globalStyles from '../../styles/global';
+import axios from 'axios';
 
 const NuevoCliente = () => {
   const [nombre, setNombre] = useState('');
@@ -17,7 +18,7 @@ const NuevoCliente = () => {
   const [empresa, setEmpresa] = useState('');
   const [alerta, setAlerta] = useState(false);
 
-  const guardarCliente = () => {
+  const guardarCliente = async () => {
     if (nombre === '' || telefono === '' || correo === '' || empresa === '') {
       setAlerta(true);
       return;
@@ -28,6 +29,20 @@ const NuevoCliente = () => {
       correo,
       empresa,
     };
+
+    try {
+      const res = await axios.post(
+        'http://192.168.20.62:3000/clientes',
+        cliente,
+      );
+      console.log(res);
+      if (Platform.OS == 'android') {
+      } else {
+        await axios.post('http://localhost:3000/clientes', cliente);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <ScrollView>

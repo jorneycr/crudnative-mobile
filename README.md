@@ -140,11 +140,15 @@ db.json
 
 ### Run Fake API
 
+##### Check your local IP for Android on Windows in cmd ipconfig
+
 ```bash
-json-server db.json
+json-server db.json -H 192.168.20.62
 
 ```
 
 ### End-Points
 
-[Get Clientes](http://localhost:3000/clientes)
+[Home](http://192.168.20.62:3000)
+
+[Get Clientes](http://192.168.20.62:3000/clientes)
