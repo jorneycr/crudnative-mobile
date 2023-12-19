@@ -111,7 +111,7 @@ npm install react-native-vector-icons
 
 ```
 
-### Seet Up Android
+### Set Up Android
 
 ```bash
 
@@ -122,3 +122,25 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 ```
 
 `https://oblador.github.io/react-native-vector-icons/`
+
+## Set up Fake API in 30 seg
+
+### Dependencies
+
+```bash
+npm install -g json-server
+
+```
+
+### Create a file in the projet's root
+
+```bash
+db.json
+```
+
+### Run Fake API
+
+```bash
+json-server db.json
+
+```
