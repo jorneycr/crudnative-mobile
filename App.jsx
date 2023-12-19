@@ -25,38 +25,44 @@ const theme = {
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Inicio">
-        <Stack.Screen
-          name="Inicio"
-          component={Inicio}
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: theme.colors.primary,
-            },
-            headerTintColor: theme.colors.surface,
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}
-          options={({navigation, route}) => ({
-            headerLeft: props => (
-              <BarraSuperior {...props} navigation={navigation} route={route} />
-            ),
-          })}
-        />
-        <Stack.Screen
-          name="NuevoCliente"
-          component={NuevoCliente}
-          options={{title: 'Nuevo Cliente'}}
-        />
-        <Stack.Screen
-          name="DetallesCliente"
-          component={DetallesCliente}
-          options={{title: 'Detalles Cliente'}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <PaperProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Inicio">
+          <Stack.Screen
+            name="Inicio"
+            component={Inicio}
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: theme.colors.primary,
+              },
+              headerTintColor: theme.colors.surface,
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
+            options={({navigation, route}) => ({
+              headerLeft: props => (
+                <BarraSuperior
+                  {...props}
+                  navigation={navigation}
+                  route={route}
+                />
+              ),
+            })}
+          />
+          <Stack.Screen
+            name="NuevoCliente"
+            component={NuevoCliente}
+            options={{title: 'Nuevo Cliente'}}
+          />
+          <Stack.Screen
+            name="DetallesCliente"
+            component={DetallesCliente}
+            options={{title: 'Detalles Cliente'}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 

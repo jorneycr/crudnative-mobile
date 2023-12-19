@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
 import {Alert, ScrollView, StyleSheet, View} from 'react-native';
-import {Button, Headline, TextInput} from 'react-native-paper';
+import {
+  Button,
+  Headline,
+  TextInput,
+  Paragraph,
+  Dialog,
+  Portal,
+} from 'react-native-paper';
 import globalStyles from '../../styles/global';
 
 const NuevoCliente = () => {
@@ -8,9 +15,11 @@ const NuevoCliente = () => {
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
+  const [alerta, setAlerta] = useState(false);
+
   const guardarCliente = () => {
     if (nombre === '' || telefono === '' || correo === '' || empresa === '') {
-      Alert.alert('Campos Vacios', 'Los campos no puede estar vacios');
+      setAlerta(true);
       return;
     }
     const cliente = {
@@ -58,6 +67,17 @@ const NuevoCliente = () => {
           onPress={() => guardarCliente()}>
           Guardar Cliente
         </Button>
+        <Portal>
+          <Dialog visible={alerta} onDismiss={() => setAlerta(false)}>
+            <Dialog.Title>Error</Dialog.Title>
+            <Dialog.Content>
+              <Paragraph>Todos los campos son obligatorios</Paragraph>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button onPress={() => setAlerta(false)}>OK</Button>
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
       </View>
     </ScrollView>
   );
