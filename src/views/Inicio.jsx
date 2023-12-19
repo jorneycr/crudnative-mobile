@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import {Headline, List, Button} from 'react-native-paper';
+import {Headline, List, Button, FAB} from 'react-native-paper';
 import globalStyles from '../../styles/global';
 
 const Inicio = ({navigation}) => {
@@ -45,10 +45,24 @@ const Inicio = ({navigation}) => {
           <List.Item title={item.nombre} description={item.empresa} />
         )}
       />
+      <FAB
+        icon="plus"
+        style={styles.fab}
+        onPress={() =>
+          navigation.navigate('NuevoCliente', {guardarConsultarAPI})
+        }
+      />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 20,
+    right: 0,
+    bottom: 20,
+  },
+});
 
 export default Inicio;

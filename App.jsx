@@ -41,13 +41,13 @@ function App() {
               },
             }}
             options={({navigation, route}) => ({
-              headerLeft: props => (
-                <BarraSuperior
-                  {...props}
-                  navigation={navigation}
-                  route={route}
-                />
-              ),
+              headerTitleAlign: 'center',
+              // headerLeft: props => (
+              //   <BarraSuperior
+              //     {...props}
+              //     navigation={navigation}
+              //     route={route}
+              //   />)
             })}
           />
           <Stack.Screen
