@@ -13,20 +13,6 @@
       "correo": "correo@coreo.com",
       "empresa": "test",
       "id": 2
-    },
-    {
-      "nombre": "dabda",
-      "telefono": "dadadad",
-      "correo": "dad",
-      "empresa": "dad",
-      "id": 3
-    },
-    {
-      "nombre": "cosas",
-      "telefono": "caasdx",
-      "correo": "sad",
-      "empresa": "asdsad",
-      "id": 4
     }
   ]
 }

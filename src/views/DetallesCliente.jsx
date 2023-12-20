@@ -2,9 +2,11 @@ import React from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
 import {Headline, Subheading, Text, Button} from 'react-native-paper';
 import globalStyles from '../../styles/global';
+import axios from 'axios';
 
-const DetallesCliente = ({route}) => {
-  const {nombre, telefono, correo, empresa} = route.params.item;
+const DetallesCliente = ({navigation, route}) => {
+  const {guardarConsultarAPI} = route.params;
+  const {nombre, telefono, correo, empresa, id} = route.params.item;
   const confirmacion = () => {
     Alert.alert('Eliminar', 'Un Cliente elimiinado no se puede recuperar', [
       {
@@ -15,8 +17,15 @@ const DetallesCliente = ({route}) => {
     ]);
   };
 
-  const eliminarContacto = () => {
-    console.log('Eliminar.....');
+  const eliminarContacto = async () => {
+    const url = `http://192.168.20.62:3000/clientes/${id}`;
+    try {
+      await axios.delete(url);
+    } catch (error) {
+      console.log(error);
+    }
+    navigation.navigate('Inicio');
+    guardarConsultarAPI(true);
   };
   return (
     <View style={globalStyles.contenedor}>
