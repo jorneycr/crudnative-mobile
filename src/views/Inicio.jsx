@@ -42,7 +42,11 @@ const Inicio = ({navigation}) => {
         data={clientes}
         keyExtractor={cliente => cliente.id.toString()}
         renderItem={({item}) => (
-          <List.Item title={item.nombre} description={item.empresa} />
+          <List.Item
+            title={item.nombre}
+            description={item.empresa}
+            onPress={() => navigation.navigate('DetallesCliente', {item})}
+          />
         )}
       />
       <FAB
