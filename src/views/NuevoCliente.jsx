@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {
   Button,
@@ -20,6 +20,16 @@ const NuevoCliente = ({navigation, route}) => {
   const [empresa, setEmpresa] = useState('');
   const [alerta, setAlerta] = useState(false);
 
+  useEffect(() => {
+    if (route.params.cliente) {
+      const {nombre, telefono, correo, empresa} = route.params.cliente;
+      setNombre(nombre);
+      setTelefono(telefono);
+      setCorreo(correo);
+      setEmpresa(empresa);
+    }
+  }, []);
+
   const guardarCliente = async () => {
     if (nombre === '' || telefono === '' || correo === '' || empresa === '') {
       setAlerta(true);
@@ -32,14 +42,28 @@ const NuevoCliente = ({navigation, route}) => {
       empresa,
     };
 
-    try {
-      if (Platform.OS == 'android') {
-        await axios.post('http://192.168.20.62:3000/clientes', cliente);
-      } else {
-        await axios.post('http://localhost:3000/clientes', cliente);
+    if (route.params.cliente) {
+      const {id} = route.params.cliente;
+      cliente.id = id;
+      try {
+        if (Platform.OS == 'android') {
+          await axios.put(`http://192.168.0.6:3000/clientes/${id}`, cliente);
+        } else {
+          await axios.put(`http://localhost:3000/clientes/${id}`, cliente);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        if (Platform.OS == 'android') {
+          await axios.post('http://192.168.0.6:3000/clientes', cliente);
+        } else {
+          await axios.post('http://localhost:3000/clientes', cliente);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     navigation.navigate('Inicio');

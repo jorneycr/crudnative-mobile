@@ -1,6 +1,6 @@
 import React from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
-import {Headline, Subheading, Text, Button} from 'react-native-paper';
+import {Headline, Subheading, Text, Button, FAB} from 'react-native-paper';
 import globalStyles from '../../styles/global';
 import axios from 'axios';
 
@@ -18,7 +18,7 @@ const DetallesCliente = ({navigation, route}) => {
   };
 
   const eliminarContacto = async () => {
-    const url = `http://192.168.20.62:3000/clientes/${id}`;
+    const url = `http://192.168.0.6:3000/clientes/${id}`;
     try {
       await axios.delete(url);
     } catch (error) {
@@ -46,6 +46,16 @@ const DetallesCliente = ({navigation, route}) => {
         onPress={() => confirmacion()}>
         Eliminar Cliente
       </Button>
+      <FAB
+        icon="pencil"
+        style={globalStyles.fab}
+        onPress={() =>
+          navigation.navigate('NuevoCliente', {
+            cliente: route.params.item,
+            guardarConsultarAPI,
+          })
+        }
+      />
     </View>
   );
 };

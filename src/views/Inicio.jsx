@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {Headline, List, Button, FAB} from 'react-native-paper';
 import globalStyles from '../../styles/global';
 
@@ -11,7 +11,7 @@ const Inicio = ({navigation}) => {
   useEffect(() => {
     const obtenerClentesApi = async () => {
       try {
-        const res = await axios.get('http://192.168.20.62:3000/clientes');
+        const res = await axios.get('http://192.168.0.6:3000/clientes');
         if (res.status === 200) {
           setClientes(res.data);
           guardarConsultarAPI(false);
@@ -56,7 +56,7 @@ const Inicio = ({navigation}) => {
       />
       <FAB
         icon="plus"
-        style={styles.fab}
+        style={globalStyles.fab}
         onPress={() =>
           navigation.navigate('NuevoCliente', {guardarConsultarAPI})
         }
@@ -64,14 +64,5 @@ const Inicio = ({navigation}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  fab: {
-    position: 'absolute',
-    margin: 20,
-    right: 0,
-    bottom: 20,
-  },
-});
 
 export default Inicio;

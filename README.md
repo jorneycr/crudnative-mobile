@@ -149,8 +149,8 @@ json-server db.json -H 192.168.20.62
 
 ### End-Points
 
-[Home](http://192.168.20.62:3000)
+[Home](http://192.168.0.6:3000)
 
-[Get Clientes](http://192.168.20.62:3000/clientes)
+[Get Clientes](http://192.168.0.6:3000/clientes)
 
-[Post Clientes](http://192.168.20.62:3000/clientes)
+[Post Clientes](http://192.168.0.6:3000/clientes)
